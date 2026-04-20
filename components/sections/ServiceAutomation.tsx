@@ -1,0 +1,80 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/ui/Container';
+import { KenBurns } from '@/components/motion/KenBurns';
+import { SectionReveal } from '@/components/motion/SectionReveal';
+
+export function ServiceAutomation() {
+  return (
+    <section
+      id="service-automation"
+      aria-labelledby="service-automation-heading"
+      className="py-[80px] md:py-[180px]"
+    >
+      <Container>
+        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-0">
+          {/* LEFT — text column (desktop). On mobile, text still renders first. */}
+          <div className="order-1 flex flex-col justify-center gap-8 md:order-1 md:pr-20">
+            <SectionReveal delay={0}>
+              <p className="font-mono text-caption uppercase text-[var(--fg-muted)]">
+                02 — AUTOMATION
+              </p>
+            </SectionReveal>
+
+            <SectionReveal delay={0.1}>
+              <h2
+                id="service-automation-heading"
+                className="font-serif text-display-m text-[var(--fg)]"
+              >
+                Pipelines that do the work.
+              </h2>
+            </SectionReveal>
+
+            <SectionReveal delay={0.2}>
+              <p className="font-sans text-body-l max-w-[480px] text-[var(--fg)]">
+                We build custom AI automations, internal tools, and data
+                pipelines. Your team stops doing the boring parts. The good
+                work compounds.
+              </p>
+            </SectionReveal>
+
+            <SectionReveal delay={0.3}>
+              <p className="font-sans text-body max-w-[480px] text-[var(--fg-muted)]">
+                Workflow automation, custom built — AI pipelines with real
+                reliability — Internal dashboards + operator tools
+              </p>
+            </SectionReveal>
+
+            <SectionReveal delay={0.4}>
+              <Link
+                href="/book"
+                className="lf-link-underline font-sans text-[16px] font-medium text-[var(--fg)]"
+              >
+                Request a custom quotation →
+              </Link>
+            </SectionReveal>
+          </div>
+
+          {/* RIGHT — matted image */}
+          <div
+            className="relative order-2 w-full md:order-2"
+            style={{ padding: '40px', background: 'var(--bg)' }}
+          >
+            <div className="relative w-full" style={{ aspectRatio: '4 / 5' }}>
+              <KenBurns durationSec={12} scaleTo={1.03}>
+                <Image
+                  src="/images/service-automation/service-automation-FINAL.png"
+                  alt="Automation pipeline composition — operator tools, dashboards, and data flow"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                  priority={false}
+                />
+              </KenBurns>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
