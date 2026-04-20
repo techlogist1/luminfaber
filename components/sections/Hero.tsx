@@ -8,7 +8,7 @@ const CREAM = '#F5EFE0';
 
 export function Hero() {
   return (
-    <section className="relative h-[95svh] w-full overflow-hidden">
+    <section className="relative h-[100svh] w-full overflow-hidden">
       {/* Ken Burns background — hero is full-bleed, so start pre-zoomed to avoid edge seams */}
       <KenBurns durationSec={14} startScale={1.08} scaleTo={1.12}>
         <Image
