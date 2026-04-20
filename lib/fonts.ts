@@ -1,4 +1,12 @@
 import localFont from 'next/font/local';
+import { Caveat } from 'next/font/google';
+
+export const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-caveat',
+  display: 'swap',
+});
 
 export const prata = localFont({
   src: [{ path: '../public/fonts/Prata-Regular.ttf', weight: '400', style: 'normal' }],

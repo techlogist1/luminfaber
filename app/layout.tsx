@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { prata, ebGaramond, switzer, fragmentMono } from '@/lib/fonts';
+import { prata, ebGaramond, switzer, fragmentMono, caveat } from '@/lib/fonts';
 import { GrainOverlay } from '@/components/layout/GrainOverlay';
 import { CustomCursor } from '@/components/layout/CustomCursor';
 import './globals.css';
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${prata.variable} ${ebGaramond.variable} ${switzer.variable} ${fragmentMono.variable}`}
+      className={`${prata.variable} ${ebGaramond.variable} ${switzer.variable} ${fragmentMono.variable} ${caveat.variable}`}
     >
       <body>
         {children}

@@ -13,21 +13,34 @@ type Props = {
   src: string;
   alt?: string;
   size?: Size;
-  rotate?: number;
+  tilt?: number;
+  yOffset?: string;
 };
 
-export function InlineRebus({ src, alt = '', size = 'medium', rotate = 0 }: Props) {
+export function InlineRebus({
+  src,
+  alt = '',
+  size = 'medium',
+  tilt = 0,
+  yOffset = '-0.1em',
+}: Props) {
+  const wrapperStyle: CSSProperties = {
+    display: 'inline-block',
+    lineHeight: 0,
+    transform: `translateY(${yOffset}) rotate(${tilt}deg)`,
+    transformOrigin: 'center',
+  };
+
   const imgStyle: CSSProperties = {
     display: 'inline-block',
     height: SIZE_EM[size],
     width: 'auto',
     verticalAlign: 'middle',
     marginInline: '0.12em',
-    transform: `translateY(-0.1em) rotate(${rotate}deg)`,
   };
 
   return (
-    <span className="inline-rebus" aria-hidden>
+    <span className="inline-rebus" style={wrapperStyle} aria-hidden>
       <Image
         src={src}
         alt={alt}
@@ -35,6 +48,7 @@ export function InlineRebus({ src, alt = '', size = 'medium', rotate = 0 }: Prop
         height={240}
         sizes="240px"
         style={imgStyle}
+        className="inline-rebus-img"
         priority={false}
       />
     </span>
