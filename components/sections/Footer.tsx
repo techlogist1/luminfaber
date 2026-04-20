@@ -12,9 +12,9 @@ const indexLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative w-full min-h-[400px] overflow-hidden">
-      {/* Background texture */}
-      <div className="absolute inset-0 -z-10" aria-hidden>
+    <footer className="relative w-full min-h-[400px] overflow-hidden isolate bg-[var(--bg)]">
+      {/* Background texture — z-0 so it sits inside footer's stacking context */}
+      <div className="absolute inset-0 z-0" aria-hidden>
         <Image
           src="/images/footer/footer-texture-FINAL.png"
           alt=""
@@ -24,14 +24,15 @@ export function Footer() {
         />
       </div>
 
-      {/* 80% cream overlay */}
+      {/* 80% cream overlay — z-10, lets ~20% of texture show through */}
       <div
-        className="absolute inset-0 bg-[var(--bg)]/80 pointer-events-none"
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{ background: 'rgba(245,239,224,0.8)' }}
         aria-hidden
       />
 
-      {/* Content */}
-      <div className="relative">
+      {/* Content — z-20, always on top */}
+      <div className="relative z-20">
         <Container className="py-20 px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Col 1 — Wordmark */}

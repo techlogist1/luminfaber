@@ -89,23 +89,31 @@ export function Morph({
   }, [fontSize]);
 
   // Recompute positions when phrases, size, or font change.
+  // Center each phrase within the container so width differences don't left-justify.
   useLayoutEffect(() => {
     if (!phrases.length) return;
     const font = fontFamily;
-    const all = phrases.map((p) => measurePhrase(p, font, computedSize));
-    setPositions(all);
-    const maxW = Math.max(...all.map((ps) => (ps.length ? ps[ps.length - 1].x + ps[ps.length - 1].w : 0)));
+    const raw = phrases.map((p) => measurePhrase(p, font, computedSize));
+    const widths = raw.map((ps) =>
+      ps.length ? ps[ps.length - 1].x + ps[ps.length - 1].w : 0,
+    );
+    const maxW = Math.max(...widths);
+    const centered = raw.map((ps, i) => {
+      const offset = (maxW - widths[i]) / 2;
+      return ps.map((c) => ({ ...c, x: c.x + offset }));
+    });
+    setPositions(centered);
     setContainerSize({ w: maxW, h: computedSize * 1.1 });
   }, [phrases, fontFamily, computedSize]);
 
-  // Cycle scheduler.
+  // One-shot scheduler: dwell on phrase 0, morph once to phrase 1, stay there.
   useEffect(() => {
     if (phrases.length < 2) return;
     let raf = 0;
     let timer: ReturnType<typeof setTimeout> | null = null;
     let cancelled = false;
 
-    const runMorph = (start: number) => {
+    const runMorph = () => {
       setPhase('morph');
       const t0 = performance.now();
       const step = (now: number) => {
@@ -115,16 +123,16 @@ export function Morph({
         if (t < 1) {
           raf = requestAnimationFrame(step);
         } else {
-          setIndex((i) => (i + 1) % phrases.length);
+          // Commit to target phrase and stop. Do NOT re-arm.
+          setIndex(1);
           setProgress(0);
           setPhase('dwell');
-          timer = setTimeout(() => runMorph(performance.now()), dwellMs);
         }
       };
       raf = requestAnimationFrame(step);
     };
 
-    timer = setTimeout(() => runMorph(performance.now()), dwellMs);
+    timer = setTimeout(runMorph, dwellMs);
     return () => {
       cancelled = true;
       if (raf) cancelAnimationFrame(raf);

@@ -8,87 +8,165 @@ export function Premise() {
   return (
     <section className="relative w-full py-[80px] md:py-[180px] overflow-hidden">
       <Container className="relative">
-        {/* Scattered collage objects — absolutely positioned, z below text (z-0) */}
-        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+        {/* BEHIND layer — z-0, sits below the headline wrapper (z-10) */}
+        <div className="pointer-events-none absolute inset-0 z-0 hidden md:block" aria-hidden>
           <CollageObject
             src="/images/premise/premise-book-stack.png"
             alt=""
-            width={160}
-            height={160}
-            top="0"
-            left="0"
+            width={170}
+            height={170}
+            top="220px"
+            left="2%"
+            rotation={-8}
+            floatDelayMs={0}
+          />
+          <CollageObject
+            src="/images/premise/premise-film-roll.png"
+            alt=""
+            width={140}
+            height={140}
+            top="300px"
+            left="31%"
+            rotation={-4}
+            floatDelayMs={900}
+          />
+          <CollageObject
+            src="/images/premise/premise-compass.png"
+            alt=""
+            width={120}
+            height={120}
+            top="260px"
+            left="58%"
+            rotation={-3}
+            floatDelayMs={2600}
+          />
+          <CollageObject
+            src="/images/premise/premise-dried-orange.png"
+            alt=""
+            width={110}
+            height={110}
+            top="380px"
+            left="76%"
+            rotation={7}
+            floatDelayMs={1100}
+          />
+          <CollageObject
+            src="/images/premise/premise-ink-bottle.png"
+            alt=""
+            width={96}
+            height={120}
+            top="150px"
+            left="52%"
+            rotation={-5}
+            floatDelayMs={1600}
+          />
+          <CollageObject
+            src="/images/premise/premise-camera-lens.png"
+            alt=""
+            width={130}
+            height={130}
+            top="390px"
+            left="12%"
+            rotation={9}
+            floatDelayMs={2100}
+          />
+        </div>
+
+        {/* FRONT layer — z-20, clipped to headline zone so body paragraph stays readable */}
+        <div className="pointer-events-none absolute inset-0 z-20 hidden md:block" aria-hidden>
+          <CollageObject
+            src="/images/premise/premise-whiskey-glass.png"
+            alt=""
+            width={100}
+            height={100}
+            top="230px"
+            left="24%"
+            rotation={4}
+            floatDelayMs={400}
+          />
+          <CollageObject
+            src="/images/premise/premise-typewriter-key.png"
+            alt=""
+            width={72}
+            height={72}
+            top="290px"
+            left="48%"
+            rotation={-10}
+            floatDelayMs={2200}
+          />
+          <CollageObject
+            src="/images/premise/premise-toy-car.png"
+            alt=""
+            width={92}
+            height={72}
+            top="170px"
+            left="64%"
+            rotation={-6}
+            floatDelayMs={1800}
+          />
+          <CollageObject
+            src="/images/premise/premise-postage-stamp.png"
+            alt=""
+            width={68}
+            height={68}
+            top="180px"
+            left="42%"
+            rotation={12}
+            floatDelayMs={3000}
+          />
+          <CollageObject
+            src="/images/premise/premise-wildflower.png"
+            alt=""
+            width={88}
+            height={150}
+            top="110px"
+            left="8%"
+            rotation={-3}
+            floatDelayMs={1400}
+          />
+          <CollageObject
+            src="/images/premise/premise-film-negative.png"
+            alt=""
+            width={140}
+            height={60}
+            top="340px"
+            left="54%"
+            rotation={-4}
+            floatDelayMs={2800}
+          />
+        </div>
+
+        {/* Mobile — 3 objects in margins, keep headline readable */}
+        <div className="md:hidden pointer-events-none absolute inset-0 z-0" aria-hidden>
+          <CollageObject
+            src="/images/premise/premise-book-stack.png"
+            alt=""
+            width={90}
+            height={90}
+            top="60px"
+            right="-10px"
             rotation={-6}
             floatDelayMs={0}
           />
           <CollageObject
             src="/images/premise/premise-whiskey-glass.png"
             alt=""
-            width={140}
-            height={140}
-            top="120px"
-            right="40px"
-            rotation={5}
-            floatDelayMs={400}
-          />
-          <CollageObject
-            src="/images/premise/premise-film-roll.png"
-            alt=""
-            width={180}
-            height={180}
-            top="340px"
-            left="-30px"
-            rotation={-4}
-            floatDelayMs={900}
+            width={70}
+            height={70}
+            top="420px"
+            right="4%"
+            rotation={8}
+            floatDelayMs={600}
           />
           <CollageObject
             src="/images/premise/premise-wildflower.png"
             alt=""
-            width={120}
-            height={200}
-            top="300px"
-            right="120px"
-            rotation={3}
-            floatDelayMs={1400}
-          />
-          <CollageObject
-            src="/images/premise/premise-toy-car.png"
-            alt=""
-            width={130}
-            height={100}
-            top="560px"
-            left="44%"
-            rotation={-7}
-            floatDelayMs={1800}
-          />
-          <CollageObject
-            src="/images/premise/premise-typewriter-key.png"
-            alt=""
-            width={110}
+            width={65}
             height={110}
-            top="460px"
-            left="18%"
-            rotation={6}
-            floatDelayMs={2200}
-          />
-          <CollageObject
-            src="/images/premise/premise-compass.png"
-            alt=""
-            width={100}
-            height={100}
-            top="720px"
-            right="18%"
-            rotation={-3}
-            floatDelayMs={2600}
-          />
-          <CollageObject
-            src="/images/premise/premise-postage-stamp.png"
-            alt=""
-            width={80}
-            height={80}
-            bottom="40px"
-            right="12%"
-            rotation={8}
-            floatDelayMs={3000}
+            top="280px"
+            left="-10px"
+            rotation={-4}
+            floatDelayMs={1200}
           />
         </div>
 

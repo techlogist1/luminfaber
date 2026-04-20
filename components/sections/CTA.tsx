@@ -52,10 +52,10 @@ export function CTA() {
             looks — and how it works — we&apos;d love to talk.
           </p>
 
-          {/* CTA pill */}
+          {/* CTA — editorial outlined button */}
           <div className="pt-2">
             <Button
-              variant="pill"
+              variant="editorial"
               aria-expanded={formOpen}
               aria-controls="cta-contact-form"
               onClick={() => setFormOpen((v) => !v)}

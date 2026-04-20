@@ -9,13 +9,14 @@ const CREAM = '#F5EFE0';
 export function Hero() {
   return (
     <section className="relative h-[95svh] w-full overflow-hidden">
-      {/* Ken Burns background */}
-      <KenBurns durationSec={14} scaleTo={1.04}>
+      {/* Ken Burns background — hero is full-bleed, so start pre-zoomed to avoid edge seams */}
+      <KenBurns durationSec={14} startScale={1.08} scaleTo={1.12}>
         <Image
           src="/images/hero/hero-FINAL.png"
           alt=""
           fill
           priority
+          quality={90}
           sizes="100vw"
           style={{ objectFit: 'cover' }}
         />
@@ -41,7 +42,7 @@ export function Hero() {
             phrases={['You dream.', 'We build.']}
             fontFamily="var(--font-prata), serif"
             color={CREAM}
-            dwellMs={4000}
+            dwellMs={2500}
             morphMs={800}
           />
         </div>
